@@ -29,8 +29,8 @@ const themeToggle = document.getElementById('themeToggle');
                         <div class="timeline-item-content">
                             <h3 class="volunteering">Organization Team</h3>
                             <h4>International Federation of Red Cross and Red Crescent Societies</h4>
-                            <p>May 2019 - Jul 2023 · 4 yrs 3 mos</p>
-                            <p>Organized community outreach programs focusing on health and disaster preparedness.</p>
+                            <p>May 2019 - Jul 2023</p>
+                            <p>Organized community outreach programs focused on health education and disaster preparedness, helping communities become more aware and resilient in emergency situations.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -38,8 +38,8 @@ const themeToggle = document.getElementById('themeToggle');
                         <div class="timeline-item-content">
                             <h3>Electrical Engineering Team Member</h3>
                             <h4>Queen's Knights Robotics Team</h4>
-                            <p>Sep 2024 - Present · 4 mos</p>
-                            <p>Contributed to the design and implementation of robotics systems for competitions.</p>
+                            <p>Sep 2024 - Present </p>
+                            <p>Played a key role in designing and implementing electrical systems for robotics competitions, ensuring efficient integration of hardware and software components.</p>
                         </div>
                     </div>
 
@@ -49,8 +49,8 @@ const themeToggle = document.getElementById('themeToggle');
                 <div class="timeline-item-content">
                     <h3 class="volunteering">Teacher</h3>
                     <h4>Trust Program</h4>
-                    <p>May 2019 - Jul 2023 · 4 yrs 3 mos</p>
-                    <p>Taught foundational skills and educational content to underprivileged children.</p>
+                    <p>May 2019 - Jul 2023 </p>
+                    <p>Taught foundational literacy and numeracy skills to underprivileged children, using engaging lesson plans to inspire confidence and curiosity.</p>
                 </div>
             </div>
     
@@ -60,7 +60,7 @@ const themeToggle = document.getElementById('themeToggle');
                 <div class="timeline-item-content">
                     <h3>Web Developer</h3>
                     <h4>Local Businesses</h4>
-                    <p>Jan 2020 - Jul 2024 · 4 yrs 7 mos</p>
+                    <p>Jan 2020 - Jul 2024</p>
                     <p>Developed and maintained websites for small businesses, improving their online presence.</p>
                 </div>
             </div>
@@ -70,8 +70,8 @@ const themeToggle = document.getElementById('themeToggle');
                 <div class="timeline-item-content">
                     <h3 class="volunteering">Flying Squad</h3>
                     <h4>FIRST Global (IFCA)</h4>
-                    <p>Oct 2023 · 1 mo</p>
-                    <p>Provided technical assistance at the Robot Hospital during the FIRST Global Challenge 2023.</p>
+                    <p>Oct 2023 </p>
+                    <p>Provided technical assistance at the Robot Hospital during the FIRST Global Challenge, repairing, debugging, and ensuring robots met competition standards.</p>
                 </div>
             </div>
     
@@ -81,8 +81,8 @@ const themeToggle = document.getElementById('themeToggle');
                 <div class="timeline-item-content">
                     <h3>Mentor</h3>
                     <h4>FIRST Global (IFCA)</h4>
-                    <p>Nov 2022 - Present · 2 yrs 2 mos</p>
-                    <p>Mentored students in robotics projects, focusing on programming and team collaboration.</p>
+                    <p>Nov 2022 - Present</p>
+                    <p>Mentored students in robotics design and programming, focusing on fostering teamwork, collaboration, and problem-solving skills for international competitions.</p>
                 </div>
             </div>
     
@@ -92,8 +92,8 @@ const themeToggle = document.getElementById('themeToggle');
                 <div class="timeline-item-content">
                     <h3 class="volunteering">Organizer and Representative</h3>
                     <h4>USAID</h4>
-                    <p>May 2019 - Jul 2023 · 4 yrs 3 mos</p>
-                    <p>Represented the organization in initiatives promoting human rights and community development.</p>
+                    <p>May 2019 - Jul 2023</p>
+                    <p>Represented the organization in human rights, education, and community development initiatives, organizing impactful workshops and community programs.</p>
                 </div>
             </div>
 
