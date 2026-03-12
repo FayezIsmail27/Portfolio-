@@ -19,94 +19,18 @@ const themeToggle = document.getElementById('themeToggle');
             });
         });
 
-                // JavaScript Code
-                document.getElementById('experience-show-more').addEventListener('click', function () {
-            const experienceList = document.getElementById('experience-list');
-            if (this.textContent === 'Show More') {
-                experienceList.insertAdjacentHTML('beforeend', `
-                    <div class="timeline-item volunteering">
-                        <img src="pictures/RedCrosslogo.jpg" alt="Red Cross Logo">
-                        <div class="timeline-item-content">
-                            <h3 class="volunteering">Organization Team</h3>
-                            <h4>International Federation of Red Cross and Red Crescent Societies</h4>
-                            <p>May 2019 - Jul 2023</p>
-                            <p>Organized community outreach programs focused on health education and disaster preparedness, helping communities become more aware and resilient in emergency situations.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <img src="pictures/Knight'sRoboticslogo.png" alt="Knights Robotics Logo">
-                        <div class="timeline-item-content">
-                            <h3>Electrical Engineering Team Member</h3>
-                            <h4>Queen's Knights Robotics Team</h4>
-                            <p>Sep 2024 - Present </p>
-                            <p>Played a key role in designing and implementing electrical systems for robotics competitions, ensuring efficient integration of hardware and software components.</p>
-                        </div>
-                    </div>
+                const experienceBtn = document.getElementById('experience-show-more');
+const experienceList = document.getElementById('experience-list');
 
-                                <!-- Item 6: Volunteering -->
-            <div class="timeline-item volunteering">
-                <img src="pictures/trustprogram.jpg" alt="Trust Program Logo">
-                <div class="timeline-item-content">
-                    <h3 class="volunteering">Teacher</h3>
-                    <h4>Trust Program</h4>
-                    <p>May 2019 - Jul 2023 </p>
-                    <p>Taught foundational literacy and numeracy skills to underprivileged children, using engaging lesson plans to inspire confidence and curiosity.</p>
-                </div>
-            </div>
-    
-            <!-- Item 7: Experience -->
-            <div class="timeline-item">
-                <img src="pictures/LOCALB.jpg" alt="Local Business Logo">
-                <div class="timeline-item-content">
-                    <h3>Web Developer</h3>
-                    <h4>Local Businesses</h4>
-                    <p>Jan 2020 - Jul 2024</p>
-                    <p>Developed and maintained websites for small businesses, improving their online presence.</p>
-                </div>
-            </div>
-    
-            <div class="timeline-item volunteering">
-                <img src="pictures/FGCLogo.png" alt="FIRST Global Logo">
-                <div class="timeline-item-content">
-                    <h3 class="volunteering">Flying Squad</h3>
-                    <h4>FIRST Global (IFCA)</h4>
-                    <p>Oct 2023 </p>
-                    <p>Provided technical assistance at the Robot Hospital during the FIRST Global Challenge, repairing, debugging, and ensuring robots met competition standards.</p>
-                </div>
-            </div>
-    
-            <!-- Item 9: Experience -->
-            <div class="timeline-item">
-                <img src="pictures/FGCLogo.png" alt="FIRST Global Logo">
-                <div class="timeline-item-content">
-                    <h3>Mentor</h3>
-                    <h4>FIRST Global (IFCA)</h4>
-                    <p>Nov 2022 - Present</p>
-                    <p>Mentored students in robotics design and programming, focusing on fostering teamwork, collaboration, and problem-solving skills for international competitions.</p>
-                </div>
-            </div>
-    
-            <!-- Item 10: Volunteering -->
-            <div class="timeline-item volunteering">
-                <img src="pictures/USAIDLOGO.png" alt="USAID Logo">
-                <div class="timeline-item-content">
-                    <h3 class="volunteering">Organizer and Representative</h3>
-                    <h4>USAID</h4>
-                    <p>May 2019 - Jul 2023</p>
-                    <p>Represented the organization in human rights, education, and community development initiatives, organizing impactful workshops and community programs.</p>
-                </div>
-            </div>
 
-                `);
-                this.textContent = 'Show Less';
-            } else {
-                // Remove dynamically added items
-                const additionalItems = experienceList.querySelectorAll('.timeline-item:nth-child(n+4)');
-                additionalItems.forEach(item => item.remove());
-                this.textContent = 'Show More';
-            }
-        });
 
+
+const expBtn = document.getElementById('experience-show-more');
+if (expBtn) {
+  expBtn.addEventListener('click', function () {
+    // (old show more logic)
+  });
+}
 
 
 
@@ -140,15 +64,24 @@ let gameInterval;
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.fillStyle = 'lime';
+
+    // Draw snake with border
     for (let part of snake) {
+        // Fill the body of the snake
+        ctx.fillStyle = 'lime';
         ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
+
+        // Add a border to the snake's body
+        ctx.strokeStyle = 'darkgreen'; // Border color
+        ctx.lineWidth = 2; // Border thickness
+        ctx.strokeRect(part.x * gridSize, part.y * gridSize, gridSize, gridSize);
     }
 
+    // Draw food
     ctx.fillStyle = 'red';
     ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
 }
+
 
 function update() {
     const newHead = {
@@ -206,6 +139,35 @@ function aimForFood() {
         );
     }
 
+    function calculateAccessibleArea(x, y) {
+        const areaVisited = new Set();
+        const queue = [{ x, y }];
+        let accessibleCount = 0;
+
+        while (queue.length > 0) {
+            const { x: cx, y: cy } = queue.shift();
+            const key = `${cx},${cy}`;
+
+            if (areaVisited.has(key) || !isValid(cx, cy)) continue;
+
+            areaVisited.add(key);
+            accessibleCount++;
+
+            const directions = [
+                { x: 1, y: 0 },
+                { x: 0, y: 1 },
+                { x: -1, y: 0 },
+                { x: 0, y: -1 },
+            ];
+
+            for (const dir of directions) {
+                queue.push({ x: cx + dir.x, y: cy + dir.y });
+            }
+        }
+
+        return (accessibleCount / ((gridCountX * gridCountY) - snake.length)) >= 0.8;
+    }
+
     function bfs() {
         const queue = [{ x: head.x, y: head.y, path: [] }];
         visited.add(`${head.x},${head.y}`);
@@ -214,14 +176,14 @@ function aimForFood() {
             const { x, y, path } = queue.shift();
 
             if (x === food.x && y === food.y) {
-                return path[0] || direction; 
+                return path[0] || direction;
             }
 
             const directions = [
-                { x: 1, y: 0 }, 
-                { x: 0, y: 1 }, 
+                { x: 1, y: 0 },
+                { x: 0, y: 1 },
                 { x: -1, y: 0 },
-                { x: 0, y: -1 } 
+                { x: 0, y: -1 },
             ];
 
             const prioritizedDirections = [];
@@ -231,7 +193,7 @@ function aimForFood() {
                 prioritizedDirections.push(directions[1], directions[3], directions[0], directions[2]);
             }
 
-            for (let dir of prioritizedDirections) {
+            for (const dir of prioritizedDirections) {
                 const nx = x + dir.x;
                 const ny = y + dir.y;
 
@@ -245,8 +207,22 @@ function aimForFood() {
         return direction;
     }
 
-    direction = bfs();
+    let optimalDirection = bfs();
+
+    // Check if moving in the chosen direction maintains 80% accessibility
+    const newHead = {
+        x: head.x + optimalDirection.x,
+        y: head.y + optimalDirection.y,
+    };
+
+    if (!calculateAccessibleArea(newHead.x, newHead.y)) {
+        console.warn('Stalling: Unsafe move detected, recalculating.');
+        optimalDirection = direction; // Stall or choose current direction
+    }
+
+    direction = optimalDirection;
 }
+
 
 function resetGame() {
     snake = [{ x: 10, y: 10 }];
