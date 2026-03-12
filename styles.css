@@ -576,3 +576,226 @@ color: var(--link-hover);
         transform: rotate(360deg);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Experience (upgraded presentation) ===== */
+.timeline-item {
+  align-items: flex-start; /* better for multi-line bullets */
+}
+
+.timeline-item-content {
+  width: 100%;
+}
+
+.exp-top {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.exp-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.exp-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.exp-date {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.exp-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.exp-pill-job {
+  background: rgba(0, 123, 255, 0.12);
+  color: var(--primary-color);
+}
+
+.exp-pill-vol {
+  background: rgba(255, 179, 71, 0.18);
+  color: var(--volunteer-color);
+}
+
+.exp-points {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.exp-points li {
+  margin: 6px 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+  .exp-title,
+  .exp-meta {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .exp-points {
+    text-align: left;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Experience: cleaner header + drawer ===== */
+.exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.exp-date {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.exp-points {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.exp-points li {
+  margin: 6px 0;
+}
+
+/* Drawer (replaces Show More) */
+.exp-drawer {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--box-border-radius);
+  background-color: transparent;
+}
+
+.exp-drawer summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--header-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--box-border-radius);
+  padding: 14px 18px;
+
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.exp-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.exp-drawer .chev {
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+  font-size: 1.6rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.exp-drawer[open] .chev {
+  transform: rotate(90deg);
+}
+
+.exp-drawer-content {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Nice subtle "lift" on hover */
+.exp-drawer summary:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Mobile alignment */
+@media (max-width: 768px) {
+  .exp-head {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .exp-points {
+    text-align: left;
+  }
+}
+/* Paragraph style for experience */
+.exp-desc {
+  margin: 6px 0 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
